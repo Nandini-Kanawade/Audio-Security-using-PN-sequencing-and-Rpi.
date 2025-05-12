@@ -118,8 +118,9 @@ decryptedData = xor(receivedData, pnSequence);
 % Convert Back to Audio
 outputAudio = binary2audio(decryptedData);
 audiowrite('output.wav', outputAudio, 44100);
+```
 
-## 🤝 Authors
+### 🤝 Authors
 
 - **Kanawade Nandini Rajendra** (nandinikanawade@gmail.com)
 - **Dunung Sourabhi Ashwin** (sourabhidunung@gmail.com)
