@@ -83,3 +83,61 @@ The implementation involves the following steps:
    
 5. **GPIO Configuration**:
    Make sure to configure the GPIO pins on the Raspberry Pi to work with the system's transmission and reception logic.
+
+## Usage
+
+Once the system is set up, you can:
+
+### Run the Audio Encryption and Transmission Process:
+
+1. Use **MATLAB** to record audio, convert it to binary, and encrypt the data with the P-N sequence.
+2. Transmit the encrypted data from one Raspberry Pi to another over the network.
+
+### Decryption and Audio Restoration:
+
+1. The second Raspberry Pi receives the encrypted data, decrypts it using the same P-N sequence, and converts it back into the original audio signal.
+
+### Example Commands (MATLAB):
+
+```matlab
+% Record Audio
+audioData = audioread('input.wav');
+
+% Convert to Binary Stream
+binaryData = audio2binary(audioData);
+
+% Encrypt Data Using P-N Sequence
+encryptedData = xor(binaryData, pnSequence);
+
+% Transmit Data (over Raspberry Pi network)
+sendDataToRaspberryPi(encryptedData);
+
+% Decrypt Data on Receiver Side
+decryptedData = xor(receivedData, pnSequence);
+
+% Convert Back to Audio
+outputAudio = binary2audio(decryptedData);
+audiowrite('output.wav', outputAudio, 44100);
+
+## 🤝 Authors
+
+- **Kanawade Nandini Rajendra** (nandinikanawade@gmail.com)
+- **Dunung Sourabhi Ashwin** (sourabhidunung@gmail.com)
+
+
+## 📜 License
+
+This project is open-source under the [MIT License](./LICENSE).
+
+---
+
+## 💬 Citation
+
+If you use this project in your research or work, please cite:
+
+> Kanawade, N. R, Dunung,S. A, (2023). *Audio Data Communication Security Using P-N Sequences and Raspberry Pi*.
+
+## Acknowledgements
+
+- Thanks to the **Raspberry Pi Foundation** for providing a powerful and flexible platform for this project.
+- Special thanks to the **MATLAB community** for enabling integration with Raspberry Pi.
